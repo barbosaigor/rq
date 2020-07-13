@@ -84,7 +84,7 @@ e.g fetch products using Get method
 var products Products
 rq.Endpoint("my-api.com/products").Get().ToJSON(products)
 ```  
-e.g update products using the Post method  
+e.g create product using the Post method  
 ```golang
 product := Product{...}
 rq.Endpoint("my-api.com/product").JSON(product).Post()

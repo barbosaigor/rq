@@ -6,7 +6,7 @@
 //	var products Products
 //	rq.Endpoint("my-api.com/products").Get().ToJSON(products)
 //
-// e.g update products using the Post method
+// e.g create a product using the Post method
 //	product := Product{...}
 //	rq.Endpoint("my-api.com/product").JSON(product).Post()
 //
