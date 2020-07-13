@@ -1,3 +1,3 @@
-module gitlab.com/barbosaigor/rq
+module github.com/barbosaigor/rq
 
 go 1.14
