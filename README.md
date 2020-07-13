@@ -9,7 +9,7 @@ go get github.com/barbosaigor/rq
 ```
 
 ## Documentation
-For more details, you can read the complete documentation on [gopkg](https://pkg.go.dev/github.com/barbosaigor/rq).  
+For more details, you can read the complete documentation on [pkg.go.dev](https://pkg.go.dev/github.com/barbosaigor/rq).  
 You can configure your requests with these methods  
 _Endpoint_ defines the request endpoint (endpoint must contain the prefix http://)  
 _JSON_ sets the JSON to send within the request  
