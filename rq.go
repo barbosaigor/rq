@@ -3,6 +3,7 @@ package rq
 import (
 	"encoding/json"
 	"net/http"
+	"strings"
 )
 
 // RQ (requester) implements HTTP requests operations
@@ -30,11 +31,18 @@ type RQ struct {
 	cookies []*http.Cookie
 }
 
+func fixEndpointPrefix(endpoint string) string {
+	if strings.HasPrefix(endpoint, "http://") || strings.HasPrefix(endpoint, "https://") {
+		return endpoint
+	}
+	return "http://" + endpoint
+}
+
 // Endpoint creates an RQ which will request the endpoint.
 // endpoint must contain the prefix http://
 func Endpoint(endpoint string) *RQ {
 	return &RQ{
-		URL:     endpoint,
+		URL:     fixEndpointPrefix(endpoint),
 		Body:    nil,
 		Err:     nil,
 		Client:  &http.Client{},
@@ -86,7 +94,7 @@ func (rq *RQ) SetHeader(name, value string) *RQ {
 // Endpoint sets a new value for endpoint
 // endpoint must contain the prefix http://
 func (rq *RQ) Endpoint(endpoint string) *RQ {
-	rq.URL = endpoint
+	rq.URL = fixEndpointPrefix(endpoint)
 	return rq
 }
 

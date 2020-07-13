@@ -307,3 +307,21 @@ func TestSetHeader(t *testing.T) {
 		t.Errorf("SetHeader Get: expected status code %v but got %v", http.StatusNotImplemented, rq.StatusCode())
 	}
 }
+
+func TestFixEndpointPrefix(t *testing.T) {
+	url := "my-api.com"
+	rq := Endpoint(url)
+	if rq.URL != "http://"+url {
+		t.Errorf("FixEndpointPrefix - expected %s but got %s", "http://"+url, rq.URL)
+	}
+	url = "http://my-api.com"
+	rq = Endpoint(url)
+	if rq.URL != "http://my-api.com" {
+		t.Errorf("FixEndpointPrefix - expected %s but got %s", "http://my-api.com", rq.URL)
+	}
+	url = "https://my-api.com"
+	rq = Endpoint(url)
+	if rq.URL != "https://my-api.com" {
+		t.Errorf("FixEndpointPrefix - expected %s but got %s", "https://my-api.com", rq.URL)
+	}
+}
