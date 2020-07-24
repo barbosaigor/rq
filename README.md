@@ -3,15 +3,36 @@
 Package RQ is a lightweight REST (over HTTP) request library. 
 The main goal of this library is to offer simplicity and ease of use.
 
-## Installation
+## Install
 ```bash
 go get github.com/barbosaigor/rq
 ```
 
+## Usage
+e.g fetch products using Get method  
+```golang
+var products Products
+rq.Endpoint("my-api.com/products").Get().ToJSON(products)
+```  
+e.g create product using the Post method  
+```golang
+product := Product{...}
+rq.Endpoint("my-api.com/product").JSON(product).Post()
+```  
+
+RQ has an interesting error handling if an operation within the pipeline fails,
+then all subsequent operations will silently forward the error, and no operations are done.
+For error handling, you can use _Err_ which stores the last error entry inside the pipeline.
+```golang
+if rq.Endpoint("my-api.com/products").Get().Err != nil {
+    ...
+}
+```  
+
 ## Documentation
 For more details, you can read the complete documentation on [pkg.go.dev](https://pkg.go.dev/github.com/barbosaigor/rq).  
 You can configure your requests with these methods  
-**Endpoint** defines the request endpoint (if endpoint hasn't the prefix http://, it will attach it)  
+**Endpoint** defines the request endpoint (if the endpoint hasn't the protocol prefix such as http:// or https://, RQ will attach an http://)  
 ```golang
 func (rq *RQ) Endpoint(endpoint string) *RQ
 ```  
@@ -76,25 +97,4 @@ func (rq *RQ) ResponseBody() []byte
 **Response** returns the net/http Response  
 ```golang
 func (rq *RQ) Response() *http.Response
-```  
-
-## Usage
-e.g fetch products using Get method  
-```golang
-var products Products
-rq.Endpoint("my-api.com/products").Get().ToJSON(products)
-```  
-e.g create product using the Post method  
-```golang
-product := Product{...}
-rq.Endpoint("my-api.com/product").JSON(product).Post()
-```  
-
-RQ has an interesting error handling if an operation within the pipeline fails,
-then all subsequent operations will silently forward the error, and no operations are done.
-For error handling, you can use _Err_ which stores the last error entry inside the pipeline.
-```golang
-if rq.Endpoint("my-api.com/products").Get().Err != nil {
-    ...
-}
 ```  
