@@ -4,7 +4,7 @@
 //
 // e.g Fetch products using Get method
 //	var products Products
-//	rq.Endpoint("my-api.com/products").Get().ToJSON(products)
+//	rq.Endpoint("my-api.com/products").Get().ToJSON(&products)
 //
 // e.g create a product using the Post method
 //	product := Product{...}

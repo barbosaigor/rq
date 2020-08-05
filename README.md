@@ -12,7 +12,7 @@ go get github.com/barbosaigor/rq
 e.g fetch products using Get method  
 ```golang
 var products Products
-rq.Endpoint("my-api.com/products").Get().ToJSON(products)
+rq.Endpoint("my-api.com/products").Get().ToJSON(&products)
 ```  
 e.g create product using the Post method  
 ```golang
