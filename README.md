@@ -1,6 +1,6 @@
 # RQ
 
-Package RQ is a lightweight REST (over HTTP) request library. 
+Package RQ is a lightweight REST (over HTTP/HTTPS) request library. 
 The main goal of this library is to offer simplicity and ease of use.
 
 ## Install
@@ -44,11 +44,11 @@ func (rq *RQ) JSON(data interface{}) *RQ
 ```golang
 func (rq *RQ) Text(data string) *RQ
 ```  
-**Cookies** sets Cookies which is used to send within the request  
+**Cookies** sets Cookies for the request  
 ```golang
 func (rq *RQ) Cookies(cookies []*http.Cookie) *RQ
 ```  
-**Cookie** sets a cookie which is used to send within the request  
+**Cookie** sets a cookie for the request  
 ```golang
 func (rq *RQ) Cookie(cookie *http.Cookie) *RQ
 ```  

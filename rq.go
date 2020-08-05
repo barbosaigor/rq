@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// RQ (requester) implements HTTP requests operations
+// RQ (requester) implements HTTP/HTTPS requests operations
 //
 // If an operation within the pipeline fails,
 // then all subsequent operations will silently forward the eror,

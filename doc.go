@@ -1,4 +1,4 @@
-// Package rq (or requester) is a lightweight REST (over HTTP) request library.
+// Package rq (or requester) is a lightweight REST (over HTTP/HTTPS) request library.
 // The main goal of this library is to offer simplicity and ease of use.
 //
 //
@@ -6,7 +6,7 @@
 //	var products Products
 //	rq.Endpoint("my-api.com/products").Get().ToJSON(&products)
 //
-// e.g create a product using the Post method
+// e.g create a product using Post method
 //	product := Product{...}
 //	rq.Endpoint("my-api.com/product").JSON(product).Post()
 //
